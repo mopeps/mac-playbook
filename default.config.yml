@@ -1,0 +1,127 @@
+---
+configure_dotfiles: true
+configure_terminal: true
+configure_osx: true
+manage_nextcloud_documents: true
+
+# Set to 'true' to configure the Dock via dockutil.
+configure_dock: false
+dockitems_remove: []
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+dockitems_persist: []
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5
+
+configure_sudoers: false
+sudoers_custom_config: ""
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
+
+# Chezmoi
+chezmoi_repo: git@github.com:mopeps/dotfiles.git
+chezmoi_repo_accept_hostkey: true
+chezmoi_repo_local_destination: ~/.local/share/chezmoi
+chezmoi_branch: main
+chezmoi_config_path: "/Users/{{ ansible_user_id }}/.config/chezmoi/chezmoi.yaml"
+chezmoi_use_age: false
+chezmoi_age_key: "{{ lookup('ansible.builtin.env', 'AGE_KEY_FILE') | default('~/.config/age/key.txt', true) }}"
+
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  - autoconf
+  - bash-completion
+  - doxygen
+  - gettext
+  - gifsicle
+  - git
+  - gh
+  - go
+  - gpg
+  - httpie
+  - iperf
+  - libevent
+  - sqlite
+  - nmap
+  - node
+  - nvm
+  - php
+  - pngpaste
+  - ssh-copy-id
+  - readline
+  - openssl
+  - pv
+  - wget
+  - wrk
+  - zsh-history-substring-search
+
+homebrew_taps: []
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - chromedriver
+  - docker
+  - dropbox
+  - firefox
+  - google-chrome
+  - handbrake
+  - licecap
+  - sequel-ace
+  - slack
+  - sublime-text
+  - transmit
+
+# See `geerlingguy.mac.mas` role documentation for usage instructions.
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+osx_script: "~/.osx --no-restart"
+nextcloud_documents_path: "{{ ansible_env.HOME }}/Nextcloud/Documents"
+nextcloud_documents_symlink_path: "{{ ansible_env.HOME }}/Documents"
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages: []
+# - name: drush
+#   state: present # present/absent, default: present
+#   version: "^8.1" # default: N/A
+gem_packages: []
+# - name: bundler
+#   state: present # present/absent/latest, default: present
+#   version: "~> 1.15.1" # default: N/A
+npm_packages: []
+# - name: webpack
+#   state: present # present/absent/latest, default: present
+#   version: "^2.6" # default: N/A
+pip_packages: []
+# - name: mkdocs
+#   state: present # present/absent/latest, default: present
+#   version: "0.16.3" # default: N/A
+
+# Set to 'true' to configure Sublime Text.
+configure_sublime: false
+sublime_base_path: "~/Library/Application Support/Sublime Text"
+sublime_config_path: "Packages/User"
+sublime_package_control:
+  - "DocBlockr"
+  - "Dockerfile Syntax Highlighting"
+  - "FileDiffs"
+  - "GitHub Flavored Markdown Preview"
+  - "Jinja2"
+  - "Package Control"
+  - "Pretty JSON"
+  - "SublimeLinter"
+  - "SublimeLinter-contrib-yamllint"
+  - "Theme - Cobalt2"
+  - "TrailingSpaces"
+  - "WordingStatus"
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []

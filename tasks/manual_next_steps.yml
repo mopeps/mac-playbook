@@ -1,0 +1,12 @@
+---
+- name: Show manual next steps
+  ansible.builtin.debug:
+    msg:
+      - "Manual next steps after this playbook:"
+      - "1) Restore SSH keys from your encrypted backup into ~/.ssh:"
+      - "   gpg -d ssh-backup.tar.gz.gpg > ssh-backup.tar.gz && tar xzf ssh-backup.tar.gz && rm ssh-backup.tar.gz"
+      - "2) Run chezmoi to restore dotfiles (if not done already):"
+      - "   chezmoi init git@github.com:YOUR_USER/dotfiles.git && chezmoi apply"
+      - "3) Log into Bitwarden, Nextcloud, App Store, iCloud (Photos/Music), email, calendars, browsers, and chat apps."
+      - "4) Configure Time Machine backup and import VPN profiles (e.g. WireGuard) if you use them."
+      - "5) Restore app-specific data if needed (e.g. Libation library, RustDesk config, Parallels .pvm VMs)."

@@ -1,0 +1,117 @@
+
+# --------------------------------------------
+# Behaviour toggles
+# --------------------------------------------
+configure_dotfiles: false
+configure_terminal: false
+configure_dock: false
+configure_osx: false
+# Generated from current system on So. 23 Nov. 2025 09:22:59 CET
+
+homebrew_installed_packages:
+  - ansible-lint
+  - cask
+  - chezmoi
+  - fd
+  - fdupes
+  - felixkratz/formulae/sketchybar
+  - fonttools
+  - fprobe
+  - fzf
+  - git
+  - gnupg
+  - handbrake
+  - htop
+  - jdupes
+  - mas
+  - minikube
+  - molecule
+  - neovim
+  - ocrmypdf
+  - podman
+  - ruby
+  - sshpass
+  - sst/tap/opencode
+  - stow
+  - tealdeer
+  - terraform
+  - tesseract-lang
+  - tmux
+  - tree-sitter-cli
+  - watch
+  - wget
+  - yamllint
+  - yt-dlp
+
+homebrew_cask_apps:
+  - aerospace
+  - balenaetcher
+  - bambu-studio
+  - betterdisplay
+  - bitbox
+  - bitwarden
+  - bluesnooze
+  - brave-browser
+  - calibre
+  - chatgpt
+  - citrix-workspace
+  - codex
+  - displaylink
+  - duckduckgo
+  - firefox
+  - font-hack-nerd-font
+  - freecad
+  - google-chrome
+  - google-drive
+  - grayjay
+  - handbrake
+  - handbrake-app
+  - hiddenbar
+  - iterm2
+  - jiggler
+  - karabiner-elements
+  - keepassxc
+  - keycastr
+  - ledger-live
+  - libreoffice
+  - localsend
+  - logos
+  - makemkv
+  - microsoft-edge
+  - nextcloud
+  - nextcloud-vfs
+  - nordvpn
+  - notunes
+  - openmtp
+  - paragon-ntfs
+  - parallels@18
+  - proton-drive
+  - raspberry-pi-imager
+  - raycast
+  - rectangle
+  - rustdesk
+  - signal
+  - spotify
+  - steam
+  - telegram
+  - thunderbird
+  - tor-browser
+  - visual-studio-code
+  - vlc
+  - wasabi-wallet
+  - webex
+  - whatsapp
+  - zettlr
+  - zoom
+  # manual app: .KensingtonWorks (/Applications/.KensingtonWorks.app) -> 'kensingtonworks' [no brew cask]
+  # manual app: Libation (/Applications/Libation.app) -> 'libation' [no brew cask]
+
+mas_installed_app_ids:
+  - { id: 1444383602, name: " Goodnotes  " }
+  - { id: , name: "408981434  iMovie     " }
+  - { id: , name: "409183694  Keynote    " }
+  - { id: , name: "634159523  MainStage  " }
+  - { id: , name: "409203825  Numbers    " }
+  - { id: , name: "409201541  Pages      " }
+  - { id: 1528890965, name: " TextSniper " }
+  - { id: 1451685025, name: " WireGuard  " }

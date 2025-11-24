@@ -1,0 +1,71 @@
+---
+- name: Manage Documents folder with Nextcloud
+  when:
+    - ansible_system == 'Darwin'
+    - manage_nextcloud_documents
+  vars:
+    documents_symlink_path: "{{ nextcloud_documents_symlink_path | default(ansible_env.HOME + '/Documents') }}"
+    nextcloud_documents_destination: "{{ nextcloud_documents_path | default(ansible_env.HOME + '/Nextcloud/Documents') }}"
+    nextcloud_root_path: "{{ nextcloud_documents_destination | dirname }}"
+  block:
+    - name: Gather information about the current Documents path
+      ansible.builtin.stat:
+        path: "{{ documents_symlink_path }}"
+        follow: false
+      register: documents_path_stat
+
+    - name: Abort if Documents path is an unexpected type
+      ansible.builtin.fail:
+        msg: "Documents path exists but is not a directory or symlink; refusing to modify it."
+      when:
+        - documents_path_stat.stat.exists
+        - not documents_path_stat.stat.isdir | default(false)
+        - not documents_path_stat.stat.islnk | default(false)
+
+    - name: Migrate Documents into Nextcloud (if not already symlinked)
+      when: not documents_path_stat.stat.islnk | default(false)
+      block:
+        - name: Ensure Nextcloud base directory exists
+          ansible.builtin.file:
+            path: "{{ nextcloud_root_path }}"
+            state: directory
+            mode: "0755"
+
+        - name: Ensure Nextcloud Documents directory exists
+          ansible.builtin.file:
+            path: "{{ nextcloud_documents_destination }}"
+            state: directory
+            mode: "0755"
+
+        - name: Collect existing Documents contents when a directory is present
+          ansible.builtin.find:
+            paths: "{{ documents_symlink_path }}"
+            file_type: any
+            hidden: true
+          register: documents_existing_contents
+          when: documents_path_stat.stat.isdir | default(false)
+
+        - name: Move existing Documents contents into Nextcloud
+          ansible.builtin.command:
+            argv:
+              - rsync
+              - "-a"
+              - "--remove-source-files"
+              - "{{ documents_symlink_path }}/"
+              - "{{ nextcloud_documents_destination }}/"
+          when:
+            - documents_existing_contents is defined
+            - documents_existing_contents.matched > 0
+
+        - name: Remove the original Documents directory after migration
+          ansible.builtin.file:
+            path: "{{ documents_symlink_path }}"
+            state: absent
+          when:
+            - documents_path_stat.stat.isdir | default(false)
+
+        - name: Create Documents symlink pointing to Nextcloud
+          ansible.builtin.file:
+            src: "{{ nextcloud_documents_destination }}"
+            dest: "{{ documents_symlink_path }}"
+            state: link

@@ -1,0 +1,10 @@
+---
+- name: Ensure default shell is zsh
+  become: true
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/zsh
+
+- name: Note terminal settings are managed via chezmoi
+  ansible.builtin.debug:
+    msg: "Terminal configs (prompt, aliases, tmux) are applied via chezmoi dotfiles."

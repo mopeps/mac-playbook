@@ -1,0 +1,1353 @@
+2025-11-24 12:01:09,390 p=90207 u=mopets n=ansible INFO| Using /Users/mopets/opencode_repo/mac-dev-playbook/ansible.cfg as config file
+2025-11-24 12:01:16,222 p=90207 u=mopets n=ansible INFO| PLAY [Configure host.] ***************************************************************************************************
+2025-11-24 12:01:16,259 p=90207 u=mopets n=ansible INFO| TASK [Gathering Facts] ***************************************************************************************************
+2025-11-24 12:01:16,952 p=90207 u=mopets n=ansible WARNING| [WARNING]: Host '127.0.0.1' is using the discovered Python interpreter at '/opt/homebrew/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+
+2025-11-24 12:01:16,952 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-24 12:01:16,957 p=90207 u=mopets n=ansible INFO| TASK [Include playbook configuration.] ***********************************************************************************
+2025-11-24 12:01:16,978 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=/Users/mopets/opencode_repo/mac-dev-playbook/config.yml) => 
+    ansible_facts:
+        configure_dock: false
+        configure_dotfiles: false
+        configure_osx: false
+        configure_terminal: false
+        homebrew_cask_apps:
+        - aerospace
+        - balenaetcher
+        - bambu-studio
+        - betterdisplay
+        - bitbox
+        - bitwarden
+        - bluesnooze
+        - brave-browser
+        - calibre
+        - chatgpt
+        - citrix-workspace
+        - codex
+        - displaylink
+        - duckduckgo
+        - firefox
+        - font-hack-nerd-font
+        - freecad
+        - google-chrome
+        - google-drive
+        - grayjay
+        - handbrake
+        - handbrake-app
+        - hiddenbar
+        - iterm2
+        - jiggler
+        - karabiner-elements
+        - keepassxc
+        - keycastr
+        - ledger-live
+        - libreoffice
+        - localsend
+        - logos
+        - makemkv
+        - microsoft-edge
+        - nextcloud
+        - nextcloud-vfs
+        - nordvpn
+        - notunes
+        - openmtp
+        - paragon-ntfs
+        - parallels@18
+        - proton-drive
+        - raspberry-pi-imager
+        - raycast
+        - rectangle
+        - rustdesk
+        - signal
+        - spotify
+        - steam
+        - telegram
+        - thunderbird
+        - tor-browser
+        - visual-studio-code
+        - vlc
+        - wasabi-wallet
+        - webex
+        - whatsapp
+        - zettlr
+        - zoom
+        homebrew_installed_packages:
+        - ansible-lint
+        - cask
+        - chezmoi
+        - fd
+        - fdupes
+        - felixkratz/formulae/sketchybar
+        - fonttools
+        - fprobe
+        - fzf
+        - git
+        - gnupg
+        - handbrake
+        - htop
+        - jdupes
+        - mas
+        - minikube
+        - molecule
+        - neovim
+        - ocrmypdf
+        - podman
+        - ruby
+        - sshpass
+        - sst/tap/opencode
+        - stow
+        - tealdeer
+        - terraform
+        - tesseract-lang
+        - tmux
+        - tree-sitter-cli
+        - watch
+        - wget
+        - yamllint
+        - yt-dlp
+        mas_installed_app_ids:
+        -   id: 1444383602
+            name: ' Goodnotes  '
+        -   id: null
+            name: '408981434  iMovie     '
+        -   id: null
+            name: '409183694  Keynote    '
+        -   id: null
+            name: '634159523  MainStage  '
+        -   id: null
+            name: '409203825  Numbers    '
+        -   id: null
+            name: '409201541  Pages      '
+        -   id: 1528890965
+            name: ' TextSniper '
+        -   id: 1451685025
+            name: ' WireGuard  '
+    ansible_included_var_files:
+    - /Users/mopets/opencode_repo/mac-dev-playbook/config.yml
+    ansible_loop_var: item
+    changed: false
+    item: /Users/mopets/opencode_repo/mac-dev-playbook/config.yml
+
+2025-11-24 12:01:16,984 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Am I running on Mac OS X?] ***************************************************
+2025-11-24 12:01:16,995 p=90207 u=mopets n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2025-11-24 12:01:16,995 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-dev-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:7:9
+
+5   fail:
+6     msg: Target host is not running Mac OS X
+7   when: ansible_distribution != 'MacOSX'
+          ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:16,995 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: ansible_distribution != 'MacOSX'
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:16,999 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Remove existing Command Line Tools installation] *****************************
+2025-11-24 12:01:17,010 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: force_install
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:17,014 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check that the Command Line Tools path is present] ***************************
+2025-11-24 12:01:17,376 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    stat:
+        atime: 1685523932.6536536
+        attr_flags: ''
+        attributes: []
+        birthtime: 1638500507.0
+        block_size: 4096
+        blocks: 0
+        charset: binary
+        ctime: 1682678284.3454053
+        dev: 16777232
+        device_type: 0
+        executable: true
+        exists: true
+        flags: 0
+        generation: 0
+        gid: 0
+        gr_name: wheel
+        inode: 9157639
+        isblk: false
+        ischr: false
+        isdir: true
+        isfifo: false
+        isgid: false
+        islnk: false
+        isreg: false
+        issock: false
+        isuid: false
+        mimetype: inode/directory
+        mode: '0755'
+        mtime: 1682678284.3454053
+        nlink: 5
+        path: /Library/Developer/CommandLineTools
+        pw_name: root
+        readable: true
+        rgrp: true
+        roth: true
+        rusr: true
+        size: 160
+        uid: 0
+        version: null
+        wgrp: false
+        woth: false
+        writeable: false
+        wusr: true
+        xgrp: true
+        xoth: true
+        xusr: true
+
+2025-11-24 12:01:17,381 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Is the C++ compiler useable?] ************************************************
+2025-11-24 12:01:17,886 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    cmd:
+    - g++
+    - --version
+    delta: '0:00:00.145802'
+    end: '2025-11-24 12:01:17.853006'
+    msg: ''
+    rc: 0
+    start: '2025-11-24 12:01:17.707204'
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: |-
+        Apple clang version 17.0.0 (clang-1700.4.4.1)
+        Target: arm64-apple-darwin25.1.0
+        Thread model: posix
+        InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+    stdout_lines: <omitted>
+
+2025-11-24 12:01:17,890 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check the Command Line Tools package metadata] *******************************
+2025-11-24 12:01:18,358 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    cmd:
+    - pkgutil
+    - --pkg-info=com.apple.pkg.CLTools_Executables
+    delta: '0:00:00.202150'
+    end: '2025-11-24 12:01:18.324964'
+    msg: ''
+    rc: 0
+    start: '2025-11-24 12:01:18.122814'
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: |-
+        package-id: com.apple.pkg.CLTools_Executables
+        version: 26.1.0.0.1.1761104275
+        volume: /
+        location: /
+        install-time: 1763652884
+    stdout_lines: <omitted>
+
+2025-11-24 12:01:18,362 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Prepare to install Command Line Tools] ***************************************
+2025-11-24 12:01:18,372 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: pkg_info.rc != 0 or compiler.rc != 0 or not clt.stat.exists
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:18,376 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check for Command Line Tools in Software Update list (MacOS < 10.15).] *******
+2025-11-24 12:01:18,390 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-dev-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:55:7
+
+53   register: su_list_old
+54   when:
+55     - ansible_distribution_version is version('10.15', '<')
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:18,391 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: ansible_distribution_version is version('10.15', '<')
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:18,395 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check for Command Line Tools in Software Update list (MacOS >= 10.15).] ******
+2025-11-24 12:01:18,409 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-dev-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:74:7
+
+72   register: su_list_new
+73   when:
+74     - ansible_distribution_version is version('10.15', '>=')
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:18,410 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: pkg_info.rc != 0 or compiler.rc != 0 or not clt.stat.exists
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:18,415 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : set su_list for (MacOS < 10.15).] ********************************************
+2025-11-24 12:01:18,428 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: su_list_old is not skipped
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:18,432 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : set su_list for (MacOS >= 10.15).] *******************************************
+2025-11-24 12:01:18,446 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: su_list_new is not skipped
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:18,451 p=90207 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Install Command Line Tools] **************************************************
+2025-11-24 12:01:18,461 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: pkg_info.rc != 0 or compiler.rc != 0 or not clt.stat.exists
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:18,469 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Determine Homebrew ownership variables] *************************************************
+2025-11-24 12:01:18,501 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:5:21
+
+3   set_fact:
+4     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+5     homebrew_group: '{{ homebrew_group | default(ansible_user_gid) }}'
+                      ^ column 21
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:18,501 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:4:20
+
+2 - name: Determine Homebrew ownership variables
+3   set_fact:
+4     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+                     ^ column 20
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:18,501 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    ansible_facts:
+        homebrew_group: 20
+        homebrew_user: mopets
+    changed: false
+
+2025-11-24 12:01:18,505 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (M1).] *************************
+2025-11-24 12:01:19,080 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:14:9
+
+12     state: directory
+13   become: true
+14   when: ansible_machine == 'arm64'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,080 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:11:12
+
+ 9   file:
+10     path: "{{ homebrew_prefix }}"
+11     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,081 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/defaults/main.yml:4:18
+
+2 homebrew_repo: https://github.com/Homebrew/brew
+3
+4 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+                   ^ column 18
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,081 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    gid: 20
+    group: staff
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew
+    size: 1184
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:19,085 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (MacOS >= 10.13).] *************
+2025-11-24 12:01:19,097 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:17:9
+
+15
+16 - name: Ensure Homebrew parent directory has correct permissions (Intel).
+17   when: ansible_machine == 'x86_64'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,097 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: ansible_machine == 'x86_64'
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:19,101 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (MacOS < 10.13).] **************
+2025-11-24 12:01:19,113 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: ansible_machine == 'x86_64'
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:19,117 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Check if homebrew already exists.] ******************************************************
+2025-11-24 12:01:19,403 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    stat:
+        atime: 1763970645.253101
+        attr_flags: ''
+        attributes: []
+        birthtime: 1763457514.703847
+        block_size: 4096
+        blocks: 16
+        charset: us-ascii
+        checksum: 4ec636a465d2893747d790638f3aecb68561edca
+        ctime: 1763970620.7641804
+        dev: 16777232
+        device_type: 0
+        executable: true
+        exists: true
+        flags: 0
+        generation: 0
+        gid: 20
+        gr_name: staff
+        inode: 119265023
+        isblk: false
+        ischr: false
+        isdir: false
+        isfifo: false
+        isgid: false
+        islnk: false
+        isreg: true
+        issock: false
+        isuid: false
+        mimetype: text/x-shellscript
+        mode: '0755'
+        mtime: 1763457514.7041018
+        nlink: 1
+        path: /opt/homebrew/bin/brew
+        pw_name: mopets
+        readable: true
+        rgrp: true
+        roth: true
+        rusr: true
+        size: 8166
+        uid: 501
+        version: null
+        wgrp: false
+        woth: false
+        writeable: true
+        wusr: true
+        xgrp: true
+        xoth: true
+        xusr: true
+
+2025-11-24 12:01:19,407 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew directory exists.] ******************************************************
+2025-11-24 12:01:19,894 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:46:12
+
+44     path: "{{ homebrew_install_path }}"
+45     owner: "{{ homebrew_user }}"
+46     group: "{{ homebrew_group }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,895 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:45:12
+
+43   file:
+44     path: "{{ homebrew_install_path }}"
+45     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,895 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    gid: 20
+    group: staff
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew
+    size: 1184
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:19,899 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew is installed.] **********************************************************
+2025-11-24 12:01:19,910 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:60:16
+
+58     depth: 1
+59   become: true
+60   become_user: "{{ homebrew_user }}"
+                  ^ column 16
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:19,911 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: not pre_installed_brew.stat.exists
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:19,915 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure proper permissions and ownership on homebrew_brew_bin_path dirs.] ****************
+2025-11-24 12:01:20,384 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:69:12
+
+67     state: directory
+68     owner: "{{ homebrew_user }}"
+69     group: "{{ homebrew_group }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:20,384 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:68:12
+
+66     path: "{{ homebrew_brew_bin_path }}"
+67     state: directory
+68     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:20,384 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    gid: 20
+    group: staff
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/bin
+    size: 21888
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:20,390 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure proper ownership on homebrew_install_path subdirs.] ******************************
+2025-11-24 12:01:26,124 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:78:12
+
+76     state: directory
+77     owner: "{{ homebrew_user }}"
+78     group: "{{ homebrew_group }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:26,124 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:77:12
+
+75     path: "{{ homebrew_install_path }}"
+76     state: directory
+77     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:26,125 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    gid: 20
+    group: staff
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew
+    size: 1184
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:26,129 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Check if homebrew binary is already in place.] ******************************************
+2025-11-24 12:01:26,424 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    stat:
+        atime: 1763970645.253101
+        attr_flags: ''
+        attributes: []
+        birthtime: 1763457514.703847
+        block_size: 4096
+        blocks: 16
+        charset: us-ascii
+        checksum: 4ec636a465d2893747d790638f3aecb68561edca
+        ctime: 1763970620.7641804
+        dev: 16777232
+        device_type: 0
+        executable: true
+        exists: true
+        flags: 0
+        generation: 0
+        gid: 20
+        gr_name: staff
+        inode: 119265023
+        isblk: false
+        ischr: false
+        isdir: false
+        isfifo: false
+        isgid: false
+        islnk: false
+        isreg: true
+        issock: false
+        isuid: false
+        mimetype: text/x-shellscript
+        mode: '0755'
+        mtime: 1763457514.7041018
+        nlink: 1
+        path: /opt/homebrew/bin/brew
+        pw_name: mopets
+        readable: true
+        rgrp: true
+        roth: true
+        rusr: true
+        size: 8166
+        uid: 501
+        version: null
+        wgrp: false
+        woth: false
+        writeable: true
+        wusr: true
+        xgrp: true
+        xoth: true
+        xusr: true
+
+2025-11-24 12:01:26,428 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Symlink brew to homebrew_brew_bin_path.] ************************************************
+2025-11-24 12:01:26,438 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: not homebrew_binary.stat.exists
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:26,441 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Add missing folder if not on Apple-chipset] *********************************************
+2025-11-24 12:01:26,451 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:101:9
+
+ 99   set_fact:
+100     homebrew_folders_base: "{{ homebrew_folders_base + ['Homebrew'] }}"
+101   when: ansible_machine != 'arm64'
+            ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:26,451 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: ansible_machine != 'arm64'
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:26,455 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure proper homebrew folders are in place.] *******************************************
+2025-11-24 12:01:26,916 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:108:12
+
+106     state: directory
+107     owner: "{{ homebrew_user }}"
+108     group: "{{ homebrew_group }}"
+               ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:26,916 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:107:12
+
+105     path: "{{ homebrew_prefix }}/{{ item }}"
+106     state: directory
+107     owner: "{{ homebrew_user }}"
+               ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:26,917 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=Cellar) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: Cellar
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/Cellar
+    size: 6016
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:27,358 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=Frameworks) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: Frameworks
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/Frameworks
+    size: 128
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:27,803 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=Caskroom) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: Caskroom
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/Caskroom
+    size: 1728
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:28,247 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=bin) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: bin
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/bin
+    size: 21888
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:28,685 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=etc) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: etc
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/etc
+    size: 512
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:29,146 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=include) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: include
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/include
+    size: 6784
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:29,588 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=lib) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: lib
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/lib
+    size: 23904
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:30,034 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=opt) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: opt
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/opt
+    size: 7840
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:30,495 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=sbin) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: sbin
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/sbin
+    size: 384
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:30,939 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=share) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: share
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/share
+    size: 1824
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:31,386 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=share/zsh) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: share/zsh
+    mode: '0755'
+    owner: mopets
+    path: /opt/homebrew/share/zsh
+    size: 96
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:31,826 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=share/zsh/site-functions) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: share/zsh/site-functions
+    mode: '0755'
+    owner: mopets
+    path: /opt/homebrew/share/zsh/site-functions
+    size: 608
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:32,265 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=var) => 
+    ansible_loop_var: item
+    changed: false
+    gid: 20
+    group: staff
+    item: var
+    mode: '0775'
+    owner: mopets
+    path: /opt/homebrew/var
+    size: 192
+    state: directory
+    uid: 501
+
+2025-11-24 12:01:32,276 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Collect package manager fact.] **********************************************************
+2025-11-24 12:01:32,722 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-24 12:01:32,726 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Force update brew after installation.] **************************************************
+2025-11-24 12:01:32,745 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:119:11
+
+117   # Privilege escalation is only required for inner steps when
+118   # the `homebrew_user` doesn't match the `ansible_user_id`
+119   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+              ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:32,745 p=90207 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:120:16
+
+118   # the `homebrew_user` doesn't match the `ansible_user_id`
+119   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+120   become_user: "{{ homebrew_user }}"
+                   ^ column 16
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-24 12:01:32,745 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    false_condition: not pre_installed_brew.stat.exists
+    skip_reason: Conditional result was False
+
+2025-11-24 12:01:32,749 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Where is the cache?] ********************************************************************
+2025-11-24 12:01:33,081 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    changed: false
+    cmd:
+    - /opt/homebrew/bin/brew
+    - --cache
+    delta: '0:00:00.030805'
+    end: '2025-11-24 12:01:33.047063'
+    msg: ''
+    rc: 0
+    start: '2025-11-24 12:01:33.016258'
+    stderr: ''
+    stderr_lines: <omitted>
+    stdout: /Users/mopets/Library/Caches/Homebrew
+    stdout_lines: <omitted>
+
+2025-11-24 12:01:33,085 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure configured taps are tapped.] *****************************************************
+2025-11-24 12:01:33,093 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    skipped_reason: No items in the list
+
+2025-11-24 12:01:33,097 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure blacklisted cask applications are not installed.] ********************************
+2025-11-24 12:01:33,105 p=90207 u=mopets n=ansible INFO| skipping: [127.0.0.1] => 
+    changed: false
+    skipped_reason: No items in the list
+
+2025-11-24 12:01:33,109 p=90207 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Install configured cask applications.] **************************************************
+2025-11-24 12:01:34,755 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=aerospace) => 
+    ansible_loop_var: item
+    changed: false
+    item: aerospace
+    msg: 'Cask already installed: aerospace'
+
+2025-11-24 12:01:36,035 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=balenaetcher) => 
+    ansible_loop_var: item
+    changed: false
+    item: balenaetcher
+    msg: 'Cask already installed: balenaetcher'
+
+2025-11-24 12:01:37,324 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=bambu-studio) => 
+    ansible_loop_var: item
+    changed: false
+    item: bambu-studio
+    msg: 'Cask already installed: bambu-studio'
+
+2025-11-24 12:01:38,588 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=betterdisplay) => 
+    ansible_loop_var: item
+    changed: false
+    item: betterdisplay
+    msg: 'Cask already installed: betterdisplay'
+
+2025-11-24 12:01:57,897 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: ✔︎ JSON API cask.jws.json
+✔︎ JSON API formula.jws.json
+Error: It seems there is already an App at '/Applications/BitBox.app'.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:01:57,897 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=bitbox) => 
+    ansible_loop_var: item
+    changed: false
+    item: bitbox
+    msg: |-
+        ✔︎ JSON API cask.jws.json
+        ✔︎ JSON API formula.jws.json
+        Error: It seems there is already an App at '/Applications/BitBox.app'.
+
+2025-11-24 12:01:59,175 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=bitwarden) => 
+    ansible_loop_var: item
+    changed: false
+    item: bitwarden
+    msg: 'Cask already installed: bitwarden'
+
+2025-11-24 12:02:00,437 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=bluesnooze) => 
+    ansible_loop_var: item
+    changed: false
+    item: bluesnooze
+    msg: 'Cask already installed: bluesnooze'
+
+2025-11-24 12:02:01,981 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=brave-browser) => 
+    ansible_loop_var: item
+    changed: false
+    item: brave-browser
+    msg: 'Cask already installed: brave-browser'
+
+2025-11-24 12:02:03,302 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=calibre) => 
+    ansible_loop_var: item
+    changed: false
+    item: calibre
+    msg: 'Cask already installed: calibre'
+
+2025-11-24 12:02:04,594 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=chatgpt) => 
+    ansible_loop_var: item
+    changed: false
+    item: chatgpt
+    msg: 'Cask already installed: chatgpt'
+
+2025-11-24 12:02:09,061 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+Error: Failure while executing; `/usr/bin/sudo -u root -E LOGNAME=mopets USER=mopets USERNAME=mopets -- /usr/sbin/installer -pkg /opt/homebrew/Caskroom/citrix-workspace/25.08.10.31/CitrixWorkspaceAppUniversal25.08.10.31.pkg -target /` exited with 1. Here's the output:
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:02:09,062 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=citrix-workspace) => 
+    ansible_loop_var: item
+    changed: false
+    item: citrix-workspace
+    msg: |-
+        sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+        sudo: a password is required
+        Error: Failure while executing; `/usr/bin/sudo -u root -E LOGNAME=mopets USER=mopets USERNAME=mopets -- /usr/sbin/installer -pkg /opt/homebrew/Caskroom/citrix-workspace/25.08.10.31/CitrixWorkspaceAppUniversal25.08.10.31.pkg -target /` exited with 1. Here's the output:
+        sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+        sudo: a password is required
+
+2025-11-24 12:02:10,362 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=codex) => 
+    ansible_loop_var: item
+    changed: false
+    item: codex
+    msg: 'Cask already installed: codex'
+
+2025-11-24 12:02:15,594 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+Error: Failure while executing; `/usr/bin/sudo -u root -E LOGNAME=mopets USER=mopets USERNAME=mopets -- /usr/sbin/installer -pkg /opt/homebrew/Caskroom/displaylink/14.2,2025-11/DisplayLinkManager-14.2.pkg -target /` exited with 1. Here's the output:
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:02:15,594 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=displaylink) => 
+    ansible_loop_var: item
+    changed: false
+    item: displaylink
+    msg: |-
+        sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+        sudo: a password is required
+        Error: Failure while executing; `/usr/bin/sudo -u root -E LOGNAME=mopets USER=mopets USERNAME=mopets -- /usr/sbin/installer -pkg /opt/homebrew/Caskroom/displaylink/14.2,2025-11/DisplayLinkManager-14.2.pkg -target /` exited with 1. Here's the output:
+        sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+        sudo: a password is required
+
+2025-11-24 12:02:17,093 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=duckduckgo) => 
+    ansible_loop_var: item
+    changed: false
+    item: duckduckgo
+    msg: 'Cask already installed: duckduckgo'
+
+2025-11-24 12:02:18,517 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=firefox) => 
+    ansible_loop_var: item
+    changed: false
+    item: firefox
+    msg: 'Cask already installed: firefox'
+
+2025-11-24 12:02:19,803 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=font-hack-nerd-font) => 
+    ansible_loop_var: item
+    changed: false
+    item: font-hack-nerd-font
+    msg: 'Cask already installed: font-hack-nerd-font'
+
+2025-11-24 12:02:21,073 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=freecad) => 
+    ansible_loop_var: item
+    changed: false
+    item: freecad
+    msg: 'Cask already installed: freecad'
+
+2025-11-24 12:02:52,367 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: Error: It seems there is already an App at '/Applications/Google Chrome.app'.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:02:52,368 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=google-chrome) => 
+    ansible_loop_var: item
+    changed: false
+    item: google-chrome
+    msg: 'Error: It seems there is already an App at ''/Applications/Google Chrome.app''.'
+
+2025-11-24 12:02:53,896 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=google-drive) => 
+    ansible_loop_var: item
+    changed: false
+    item: google-drive
+    msg: 'Cask already installed: google-drive'
+
+2025-11-24 12:02:55,189 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=grayjay) => 
+    ansible_loop_var: item
+    changed: false
+    item: grayjay
+    msg: 'Cask already installed: grayjay'
+
+2025-11-24 12:02:56,692 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=handbrake) => 
+    ansible_loop_var: item
+    changed: false
+    item: handbrake
+    msg: 'Cask already installed: handbrake'
+
+2025-11-24 12:02:58,208 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=handbrake-app) => 
+    ansible_loop_var: item
+    changed: false
+    item: handbrake-app
+    msg: 'Cask already installed: handbrake-app'
+
+2025-11-24 12:02:59,611 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=hiddenbar) => 
+    ansible_loop_var: item
+    changed: false
+    item: hiddenbar
+    msg: 'Cask already installed: hiddenbar'
+
+2025-11-24 12:03:01,040 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=iterm2) => 
+    ansible_loop_var: item
+    changed: false
+    item: iterm2
+    msg: 'Cask already installed: iterm2'
+
+2025-11-24 12:03:02,443 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=jiggler) => 
+    ansible_loop_var: item
+    changed: false
+    item: jiggler
+    msg: 'Cask already installed: jiggler'
+
+2025-11-24 12:03:03,718 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=karabiner-elements) => 
+    ansible_loop_var: item
+    changed: false
+    item: karabiner-elements
+    msg: 'Cask already installed: karabiner-elements'
+
+2025-11-24 12:03:05,165 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=keepassxc) => 
+    ansible_loop_var: item
+    changed: false
+    item: keepassxc
+    msg: 'Cask already installed: keepassxc'
+
+2025-11-24 12:03:06,422 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=keycastr) => 
+    ansible_loop_var: item
+    changed: false
+    item: keycastr
+    msg: 'Cask already installed: keycastr'
+
+2025-11-24 12:03:07,694 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=ledger-live) => 
+    ansible_loop_var: item
+    changed: false
+    item: ledger-live
+    msg: 'Cask already installed: ledger-live'
+
+2025-11-24 12:03:08,950 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=libreoffice) => 
+    ansible_loop_var: item
+    changed: false
+    item: libreoffice
+    msg: 'Cask already installed: libreoffice'
+
+2025-11-24 12:03:10,231 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=localsend) => 
+    ansible_loop_var: item
+    changed: false
+    item: localsend
+    msg: 'Cask already installed: localsend'
+
+2025-11-24 12:03:11,620 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=logos) => 
+    ansible_loop_var: item
+    changed: false
+    item: logos
+    msg: 'Cask already installed: logos'
+
+2025-11-24 12:03:12,879 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=makemkv) => 
+    ansible_loop_var: item
+    changed: false
+    item: makemkv
+    msg: 'Cask already installed: makemkv'
+
+2025-11-24 12:03:14,283 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=microsoft-edge) => 
+    ansible_loop_var: item
+    changed: false
+    item: microsoft-edge
+    msg: 'Cask already installed: microsoft-edge'
+
+2025-11-24 12:03:17,178 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: Error: Cask 'nextcloud' conflicts with 'nextcloud-vfs'.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:03:17,178 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=nextcloud) => 
+    ansible_loop_var: item
+    changed: false
+    item: nextcloud
+    msg: 'Error: Cask ''nextcloud'' conflicts with ''nextcloud-vfs''.'
+
+2025-11-24 12:03:18,447 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=nextcloud-vfs) => 
+    ansible_loop_var: item
+    changed: false
+    item: nextcloud-vfs
+    msg: 'Cask already installed: nextcloud-vfs'
+
+2025-11-24 12:03:19,710 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=nordvpn) => 
+    ansible_loop_var: item
+    changed: false
+    item: nordvpn
+    msg: 'Cask already installed: nordvpn'
+
+2025-11-24 12:03:20,966 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=notunes) => 
+    ansible_loop_var: item
+    changed: false
+    item: notunes
+    msg: 'Cask already installed: notunes'
+
+2025-11-24 12:03:22,217 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=openmtp) => 
+    ansible_loop_var: item
+    changed: false
+    item: openmtp
+    msg: 'Cask already installed: openmtp'
+
+2025-11-24 12:03:23,647 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=paragon-ntfs) => 
+    ansible_loop_var: item
+    changed: false
+    item: paragon-ntfs
+    msg: 'Cask already installed: paragon-ntfs'
+
+2025-11-24 12:03:31,080 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+Error: It seems there is already an App at '/Applications/Parallels Desktop.app'.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:03:31,080 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=parallels@18) => 
+    ansible_loop_var: item
+    changed: false
+    item: parallels@18
+    msg: |-
+        sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+        sudo: a password is required
+        Error: It seems there is already an App at '/Applications/Parallels Desktop.app'.
+
+2025-11-24 12:03:32,360 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=proton-drive) => 
+    ansible_loop_var: item
+    changed: false
+    item: proton-drive
+    msg: 'Cask already installed: proton-drive'
+
+2025-11-24 12:03:33,780 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=raspberry-pi-imager) => 
+    ansible_loop_var: item
+    changed: false
+    item: raspberry-pi-imager
+    msg: 'Cask already installed: raspberry-pi-imager'
+
+2025-11-24 12:03:35,083 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=raycast) => 
+    ansible_loop_var: item
+    changed: false
+    item: raycast
+    msg: 'Cask already installed: raycast'
+
+2025-11-24 12:03:36,488 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=rectangle) => 
+    ansible_loop_var: item
+    changed: false
+    item: rectangle
+    msg: 'Cask already installed: rectangle'
+
+2025-11-24 12:03:37,746 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=rustdesk) => 
+    ansible_loop_var: item
+    changed: false
+    item: rustdesk
+    msg: 'Cask already installed: rustdesk'
+
+2025-11-24 12:03:39,147 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=signal) => 
+    ansible_loop_var: item
+    changed: false
+    item: signal
+    msg: 'Cask already installed: signal'
+
+2025-11-24 12:03:40,408 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=spotify) => 
+    ansible_loop_var: item
+    changed: false
+    item: spotify
+    msg: 'Cask already installed: spotify'
+
+2025-11-24 12:03:41,796 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=steam) => 
+    ansible_loop_var: item
+    changed: false
+    item: steam
+    msg: 'Cask already installed: steam'
+
+2025-11-24 12:03:43,208 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=telegram) => 
+    ansible_loop_var: item
+    changed: false
+    item: telegram
+    msg: 'Cask already installed: telegram'
+
+2025-11-24 12:03:44,490 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=thunderbird) => 
+    ansible_loop_var: item
+    changed: false
+    item: thunderbird
+    msg: 'Cask already installed: thunderbird'
+
+2025-11-24 12:03:56,217 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: Error: It seems there is already an App at '/Applications/Tor Browser.app'.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:03:56,217 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=tor-browser) => 
+    ansible_loop_var: item
+    changed: false
+    item: tor-browser
+    msg: 'Error: It seems there is already an App at ''/Applications/Tor Browser.app''.'
+
+2025-11-24 12:03:57,621 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=visual-studio-code) => 
+    ansible_loop_var: item
+    changed: false
+    item: visual-studio-code
+    msg: 'Cask already installed: visual-studio-code'
+
+2025-11-24 12:03:59,019 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=vlc) => 
+    ansible_loop_var: item
+    changed: false
+    item: vlc
+    msg: 'Cask already installed: vlc'
+
+2025-11-24 12:04:00,426 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=wasabi-wallet) => 
+    ansible_loop_var: item
+    changed: false
+    item: wasabi-wallet
+    msg: 'Cask already installed: wasabi-wallet'
+
+2025-11-24 12:04:13,542 p=90207 u=mopets n=ansible ERROR| [ERROR]: Task failed: Module failed: Error: It seems there is already an App at '/Applications/Webex.app'.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:148:7
+
+146       loop: "{{ homebrew_cask_uninstalled_apps }}"
+147
+148     - name: Install configured cask applications.
+          ^ column 7
+
+
+2025-11-24 12:04:13,542 p=90207 u=mopets n=ansible INFO| failed: [127.0.0.1] (item=webex) => 
+    ansible_loop_var: item
+    changed: false
+    item: webex
+    msg: 'Error: It seems there is already an App at ''/Applications/Webex.app''.'
+
+2025-11-24 12:04:14,949 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=whatsapp) => 
+    ansible_loop_var: item
+    changed: false
+    item: whatsapp
+    msg: 'Cask already installed: whatsapp'
+
+2025-11-24 12:04:16,228 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=zettlr) => 
+    ansible_loop_var: item
+    changed: false
+    item: zettlr
+    msg: 'Cask already installed: zettlr'
+
+2025-11-24 12:04:17,635 p=90207 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=zoom) => 
+    ansible_loop_var: item
+    changed: false
+    item: zoom
+    msg: 'Cask already installed: zoom'
+
+2025-11-24 12:04:17,652 p=90207 u=mopets n=ansible INFO| PLAY RECAP ***************************************************************************************************************
+2025-11-24 12:04:17,652 p=90207 u=mopets n=ansible INFO| 127.0.0.1                  : ok=15   changed=0    unreachable=0    failed=1    skipped=16   rescued=0    ignored=0   
