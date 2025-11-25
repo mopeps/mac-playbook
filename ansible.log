@@ -1351,3 +1351,761 @@ Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/r
 
 2025-11-24 12:04:17,652 p=90207 u=mopets n=ansible INFO| PLAY RECAP ***************************************************************************************************************
 2025-11-24 12:04:17,652 p=90207 u=mopets n=ansible INFO| 127.0.0.1                  : ok=15   changed=0    unreachable=0    failed=1    skipped=16   rescued=0    ignored=0   
+2025-11-25 09:56:30,696 p=92924 u=mopets n=ansible INFO| PLAY [Configure host.] *********************************************************
+2025-11-25 09:56:30,714 p=92924 u=mopets n=ansible INFO| TASK [Gathering Facts] *********************************************************
+2025-11-25 09:56:31,966 p=92924 u=mopets n=ansible WARNING| [WARNING]: Host '127.0.0.1' is using the discovered Python interpreter at '/opt/homebrew/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+
+2025-11-25 09:56:31,966 p=92924 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:31,988 p=92924 u=mopets n=ansible INFO| TASK [Include playbook configuration.] *****************************************
+2025-11-25 09:56:32,000 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:32,004 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Am I running on Mac OS X?] *********
+2025-11-25 09:56:32,014 p=92924 u=mopets n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2025-11-25 09:56:32,015 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:7:9
+
+5   fail:
+6     msg: Target host is not running Mac OS X
+7   when: ansible_distribution != 'MacOSX'
+          ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:32,015 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:32,019 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Remove existing Command Line Tools installation] ***
+2025-11-25 09:56:32,027 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:32,032 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check that the Command Line Tools path is present] ***
+2025-11-25 09:56:32,385 p=92924 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:32,390 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Is the C++ compiler useable?] ******
+2025-11-25 09:56:32,881 p=92924 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:32,885 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check the Command Line Tools package metadata] ***
+2025-11-25 09:56:33,348 p=92924 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:33,352 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Prepare to install Command Line Tools] ***
+2025-11-25 09:56:33,362 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:33,367 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check for Command Line Tools in Software Update list (MacOS < 10.15).] ***
+2025-11-25 09:56:33,384 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:55:7
+
+53   register: su_list_old
+54   when:
+55     - ansible_distribution_version is version('10.15', '<')
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,384 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:33,389 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check for Command Line Tools in Software Update list (MacOS >= 10.15).] ***
+2025-11-25 09:56:33,404 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:74:7
+
+72   register: su_list_new
+73   when:
+74     - ansible_distribution_version is version('10.15', '>=')
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,404 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:33,409 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : set su_list for (MacOS < 10.15).] ***
+2025-11-25 09:56:33,424 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:33,429 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : set su_list for (MacOS >= 10.15).] ***
+2025-11-25 09:56:33,442 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:33,446 p=92924 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Install Command Line Tools] ********
+2025-11-25 09:56:33,458 p=92924 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:33,467 p=92924 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Determine Homebrew ownership variables] *******
+2025-11-25 09:56:33,498 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:5:21
+
+3   set_fact:
+4     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+5     homebrew_group: '{{ homebrew_group | default(ansible_user_gid) }}'
+                      ^ column 21
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,498 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:4:20
+
+2 - name: Determine Homebrew ownership variables
+3   set_fact:
+4     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+                     ^ column 20
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,498 p=92924 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:33,502 p=92924 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (M1).] ***
+2025-11-25 09:56:33,697 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:14:9
+
+12     state: directory
+13   become: true
+14   when: ansible_machine == 'arm64'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,697 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:11:12
+
+ 9   file:
+10     path: "{{ homebrew_prefix }}"
+11     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,698 p=92924 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/defaults/main.yml:4:18
+
+2 homebrew_repo: https://github.com/Homebrew/brew
+3
+4 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+                   ^ column 18
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:33,698 p=92924 u=mopets n=ansible ERROR| [ERROR]: Task failed: Premature end of stream waiting for become success.
+>>> Standard Error
+sudo: a password is required
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:8:3
+
+6
+7 # Homebrew setup prerequisites.
+8 - name: Ensure Homebrew parent directory has correct permissions (M1).
+    ^ column 3
+
+
+2025-11-25 09:56:33,698 p=92924 u=mopets n=ansible INFO| fatal: [127.0.0.1]: FAILED! => 
+    changed: false
+    msg: |-
+        Task failed: Premature end of stream waiting for become success.
+        >>> Standard Error
+        sudo: a password is required
+
+2025-11-25 09:56:33,698 p=92924 u=mopets n=ansible INFO| PLAY RECAP *********************************************************************
+2025-11-25 09:56:33,698 p=92924 u=mopets n=ansible INFO| 127.0.0.1                  : ok=5    changed=0    unreachable=0    failed=1    skipped=9    rescued=0    ignored=0   
+2025-11-25 09:56:53,502 p=93130 u=mopets n=ansible INFO| PLAY [Configure host.] *********************************************************
+2025-11-25 09:56:53,518 p=93130 u=mopets n=ansible INFO| TASK [Gathering Facts] *********************************************************
+2025-11-25 09:56:54,119 p=93130 u=mopets n=ansible WARNING| [WARNING]: Host '127.0.0.1' is using the discovered Python interpreter at '/opt/homebrew/bin/python3.14', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/interpreter_discovery.html for more information.
+
+2025-11-25 09:56:54,119 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:54,140 p=93130 u=mopets n=ansible INFO| TASK [Include playbook configuration.] *****************************************
+2025-11-25 09:56:54,152 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:54,156 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Am I running on Mac OS X?] *********
+2025-11-25 09:56:54,168 p=93130 u=mopets n=ansible WARNING| [WARNING]: Deprecation warnings can be disabled by setting `deprecation_warnings=False` in ansible.cfg.
+
+2025-11-25 09:56:54,168 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:7:9
+
+5   fail:
+6     msg: Target host is not running Mac OS X
+7   when: ansible_distribution != 'MacOSX'
+          ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:54,168 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:54,172 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Remove existing Command Line Tools installation] ***
+2025-11-25 09:56:54,182 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:54,187 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check that the Command Line Tools path is present] ***
+2025-11-25 09:56:54,533 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:54,538 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Is the C++ compiler useable?] ******
+2025-11-25 09:56:54,896 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:54,900 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check the Command Line Tools package metadata] ***
+2025-11-25 09:56:55,205 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:55,209 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Prepare to install Command Line Tools] ***
+2025-11-25 09:56:55,219 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,223 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check for Command Line Tools in Software Update list (MacOS < 10.15).] ***
+2025-11-25 09:56:55,237 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:55:7
+
+53   register: su_list_old
+54   when:
+55     - ansible_distribution_version is version('10.15', '<')
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,237 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,241 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Check for Command Line Tools in Software Update list (MacOS >= 10.15).] ***
+2025-11-25 09:56:55,257 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/elliotweiser.osx-command-line-tools/tasks/main.yml:74:7
+
+72   register: su_list_new
+73   when:
+74     - ansible_distribution_version is version('10.15', '>=')
+         ^ column 7
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,258 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,262 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : set su_list for (MacOS < 10.15).] ***
+2025-11-25 09:56:55,277 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,282 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : set su_list for (MacOS >= 10.15).] ***
+2025-11-25 09:56:55,295 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,299 p=93130 u=mopets n=ansible INFO| TASK [elliotweiser.osx-command-line-tools : Install Command Line Tools] ********
+2025-11-25 09:56:55,310 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,318 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Determine Homebrew ownership variables] *******
+2025-11-25 09:56:55,343 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:5:21
+
+3   set_fact:
+4     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+5     homebrew_group: '{{ homebrew_group | default(ansible_user_gid) }}'
+                      ^ column 21
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,343 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:4:20
+
+2 - name: Determine Homebrew ownership variables
+3   set_fact:
+4     homebrew_user: '{{ homebrew_user | default(ansible_user_id) }}'
+                     ^ column 20
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,343 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:55,347 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (M1).] ***
+2025-11-25 09:56:55,891 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:14:9
+
+12     state: directory
+13   become: true
+14   when: ansible_machine == 'arm64'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,891 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:11:12
+
+ 9   file:
+10     path: "{{ homebrew_prefix }}"
+11     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,891 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/defaults/main.yml:4:18
+
+2 homebrew_repo: https://github.com/Homebrew/brew
+3
+4 homebrew_prefix: "{{ (ansible_machine == 'arm64') | ternary('/opt/homebrew', '/usr/local') }}"
+                   ^ column 18
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,891 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:55,895 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (MacOS >= 10.13).] ***
+2025-11-25 09:56:55,904 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:17:9
+
+15
+16 - name: Ensure Homebrew parent directory has correct permissions (Intel).
+17   when: ansible_machine == 'x86_64'
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:55,905 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,908 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew parent directory has correct permissions (MacOS < 10.13).] ***
+2025-11-25 09:56:55,919 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:55,923 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Check if homebrew already exists.] ************
+2025-11-25 09:56:56,209 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:56,213 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew directory exists.] ************
+2025-11-25 09:56:56,675 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:46:12
+
+44     path: "{{ homebrew_install_path }}"
+45     owner: "{{ homebrew_user }}"
+46     group: "{{ homebrew_group }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:56,675 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:45:12
+
+43   file:
+44     path: "{{ homebrew_install_path }}"
+45     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:56,675 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:56,679 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure Homebrew is installed.] ****************
+2025-11-25 09:56:56,690 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:60:16
+
+58     depth: 1
+59   become: true
+60   become_user: "{{ homebrew_user }}"
+                  ^ column 16
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:56,690 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:56:56,695 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure proper permissions and ownership on homebrew_brew_bin_path dirs.] ***
+2025-11-25 09:56:57,156 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:69:12
+
+67     state: directory
+68     owner: "{{ homebrew_user }}"
+69     group: "{{ homebrew_group }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:57,156 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:68:12
+
+66     path: "{{ homebrew_brew_bin_path }}"
+67     state: directory
+68     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:56:57,156 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:56:57,160 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure proper ownership on homebrew_install_path subdirs.] ***
+2025-11-25 09:57:03,563 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:78:12
+
+76     state: directory
+77     owner: "{{ homebrew_user }}"
+78     group: "{{ homebrew_group }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:03,563 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:77:12
+
+75     path: "{{ homebrew_install_path }}"
+76     state: directory
+77     owner: "{{ homebrew_user }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:03,563 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1]
+2025-11-25 09:57:03,568 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Check if homebrew binary is already in place.] ***
+2025-11-25 09:57:03,855 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:57:03,860 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Symlink brew to homebrew_brew_bin_path.] ******
+2025-11-25 09:57:03,868 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:57:03,875 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Add missing folder if not on Apple-chipset] ***
+2025-11-25 09:57:03,886 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:101:9
+
+ 99   set_fact:
+100     homebrew_folders_base: "{{ homebrew_folders_base + ['Homebrew'] }}"
+101   when: ansible_machine != 'arm64'
+            ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:03,886 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:57:03,890 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure proper homebrew folders are in place.] ***
+2025-11-25 09:57:04,356 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:108:12
+
+106     state: directory
+107     owner: "{{ homebrew_user }}"
+108     group: "{{ homebrew_group }}"
+               ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:04,356 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:107:12
+
+105     path: "{{ homebrew_prefix }}/{{ item }}"
+106     state: directory
+107     owner: "{{ homebrew_user }}"
+               ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:04,356 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=Cellar)
+2025-11-25 09:57:04,795 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=Frameworks)
+2025-11-25 09:57:05,234 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=Caskroom)
+2025-11-25 09:57:05,672 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=bin)
+2025-11-25 09:57:06,118 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=etc)
+2025-11-25 09:57:06,556 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=include)
+2025-11-25 09:57:07,001 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=lib)
+2025-11-25 09:57:07,446 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=opt)
+2025-11-25 09:57:07,886 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=sbin)
+2025-11-25 09:57:08,330 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=share)
+2025-11-25 09:57:08,772 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=share/zsh)
+2025-11-25 09:57:09,215 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=share/zsh/site-functions)
+2025-11-25 09:57:09,654 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=var)
+2025-11-25 09:57:09,664 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Collect package manager fact.] ****************
+2025-11-25 09:57:10,086 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:57:10,090 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Force update brew after installation.] ********
+2025-11-25 09:57:10,109 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:119:11
+
+117   # Privilege escalation is only required for inner steps when
+118   # the `homebrew_user` doesn't match the `ansible_user_id`
+119   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+              ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:10,109 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/tasks/main.yml:120:16
+
+118   # the `homebrew_user` doesn't match the `ansible_user_id`
+119   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+120   become_user: "{{ homebrew_user }}"
+                   ^ column 16
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:57:10,109 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:57:10,113 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Where is the cache?] **************************
+2025-11-25 09:57:10,417 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:57:10,421 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure configured taps are tapped.] ***********
+2025-11-25 09:57:10,429 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:57:10,434 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure blacklisted cask applications are not installed.] ***
+2025-11-25 09:57:10,443 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:57:10,447 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Install configured cask applications.] ********
+2025-11-25 09:57:12,036 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=chromedriver)
+2025-11-25 09:57:13,314 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=docker)
+2025-11-25 09:57:14,563 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=dropbox)
+2025-11-25 09:57:16,126 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=firefox)
+2025-11-25 09:57:17,404 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=google-chrome)
+2025-11-25 09:57:18,807 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=handbrake)
+2025-11-25 09:57:20,076 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=licecap)
+2025-11-25 09:57:21,328 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=sequel-ace)
+2025-11-25 09:57:22,583 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=slack)
+2025-11-25 09:57:23,837 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=sublime-text)
+2025-11-25 09:57:25,114 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=transmit)
+2025-11-25 09:57:25,123 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure blacklisted homebrew packages are not installed.] ***
+2025-11-25 09:57:25,132 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:57:25,136 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Ensure configured homebrew packages are installed.] ***
+2025-11-25 09:57:26,814 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=autoconf)
+2025-11-25 09:57:28,328 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=bash-completion)
+2025-11-25 09:57:29,924 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=doxygen)
+2025-11-25 09:57:31,524 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=gettext)
+2025-11-25 09:57:33,143 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=gifsicle)
+2025-11-25 09:57:34,666 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=git)
+2025-11-25 09:57:36,181 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=gh)
+2025-11-25 09:57:37,688 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=go)
+2025-11-25 09:57:39,174 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=gpg)
+2025-11-25 09:57:40,761 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=httpie)
+2025-11-25 09:57:42,371 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=iperf)
+2025-11-25 09:57:43,925 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=libevent)
+2025-11-25 09:57:45,442 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=sqlite)
+2025-11-25 09:57:46,985 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=nmap)
+2025-11-25 09:57:48,535 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=node)
+2025-11-25 09:57:50,055 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=nvm)
+2025-11-25 09:57:51,569 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=php)
+2025-11-25 09:57:53,105 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=pngpaste)
+2025-11-25 09:57:54,645 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=ssh-copy-id)
+2025-11-25 09:57:56,193 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=readline)
+2025-11-25 09:57:57,714 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=openssl)
+2025-11-25 09:57:59,214 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=pv)
+2025-11-25 09:58:00,720 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => (item=wget)
+2025-11-25 09:58:02,256 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=wrk)
+2025-11-25 09:58:03,764 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=zsh-history-substring-search)
+2025-11-25 09:58:03,779 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Upgrade all homebrew packages (if configured).] ***
+2025-11-25 09:58:03,803 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:03,808 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Check for Brewfile.] **************************
+2025-11-25 09:58:04,096 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:58:04,101 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.homebrew : Install from Brewfile.] ***********************
+2025-11-25 09:58:04,120 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:04,127 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Install chezmoi] ***********************************************
+2025-11-25 09:58:05,686 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:58:05,691 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Ensure chezmoi config directory exists] ************************
+2025-11-25 09:58:05,987 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:11:12
+
+ 9     path: "{{ chezmoi_config_path | dirname }}"
+10     state: directory
+11     owner: "{{ ansible_user_id }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:05,987 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/default.config.yml:31:22
+
+29 chezmoi_repo_local_destination: ~/.local/share/chezmoi
+30 chezmoi_branch: main
+31 chezmoi_config_path: "/Users/{{ ansible_user_id }}/.config/chezmoi/chezmoi.yaml"
+                        ^ column 22
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:05,987 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:58:05,993 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Write chezmoi config] ******************************************
+2025-11-25 09:58:06,270 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:18:12
+
+16     src: chezmoi.yaml.j2
+17     dest: "{{ chezmoi_config_path }}"
+18     owner: "{{ ansible_user_id }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:06,271 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1]
+2025-11-25 09:58:06,274 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Ensure chezmoi backup directory exists] ************************
+2025-11-25 09:58:06,542 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:25:12
+
+23     path: "/Users/{{ ansible_user_id }}/.local/share/chezmoi-backups/pre-apply"
+24     state: directory
+25     owner: "{{ ansible_user_id }}"
+              ^ column 12
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:06,542 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:23:11
+
+21 - name: Ensure chezmoi backup directory exists
+22   ansible.builtin.file:
+23     path: "/Users/{{ ansible_user_id }}/.local/share/chezmoi-backups/pre-apply"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:06,542 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1]
+2025-11-25 09:58:06,546 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Backup existing dotfiles before applying chezmoi] **************
+2025-11-25 09:58:06,812 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:34:9
+
+32       - "-a"
+33       - "--relative"
+34       - "/Users/{{ ansible_user_id }}/{{ item }}"
+           ^ column 9
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:06,812 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:36:14
+
+34       - "/Users/{{ ansible_user_id }}/{{ item }}"
+35       - "/Users/{{ ansible_user_id }}/.local/share/chezmoi-backups/pre-apply/"
+36     creates: "/Users/{{ ansible_user_id }}/.local/share/chezmoi-backups/pre-apply/Users/{{ ansible_user_id }}/{{ i...
+                ^ column 14
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:06,812 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.bashrc)
+2025-11-25 09:58:07,072 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.alias)
+2025-11-25 09:58:07,328 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.tmux.conf)
+2025-11-25 09:58:07,585 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.tmux.conf-t)
+2025-11-25 09:58:07,837 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.vimrc)
+2025-11-25 09:58:08,098 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.ansible.cfg)
+2025-11-25 09:58:08,350 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.aerospace.toml)
+2025-11-25 09:58:08,602 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.config/nvim)
+2025-11-25 09:58:08,855 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.config/tridactyl)
+2025-11-25 09:58:09,107 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.config/sketchybar)
+2025-11-25 09:58:09,361 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1] => (item=.config/karabiner)
+2025-11-25 09:58:09,369 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Check if chezmoi source is a git repo] *************************
+2025-11-25 09:58:09,638 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:53:11
+
+51 - name: Check if chezmoi source is a git repo
+52   ansible.builtin.stat:
+53     path: "/Users/{{ ansible_user_id }}/.local/share/chezmoi/.git"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:09,638 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:58:09,642 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Remove existing non-git chezmoi source dir] ********************
+2025-11-25 09:58:09,652 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:09,657 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Ensure chezmoi source repo is present] *************************
+2025-11-25 09:58:13,030 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/roles/chezmoi/tasks/main.yml:65:11
+
+63   ansible.builtin.git:
+64     repo: "{{ chezmoi_repo }}"
+65     dest: "/Users/{{ ansible_user_id }}/.local/share/chezmoi"
+             ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:13,031 p=93130 u=mopets n=ansible INFO| changed: [127.0.0.1]
+2025-11-25 09:58:13,037 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Check for pending chezmoi changes] *****************************
+2025-11-25 09:58:13,301 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,305 p=93130 u=mopets n=ansible INFO| TASK [chezmoi : Apply chezmoi state] *******************************************
+2025-11-25 09:58:13,323 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,330 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Ensure MAS is installed.] **************************
+2025-11-25 09:58:13,351 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,355 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Get MAS account status] ****************************
+2025-11-25 09:58:13,376 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,381 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Sign in to MAS when email and password are provided.] ***
+2025-11-25 09:58:13,401 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,406 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Sign in to MAS when email is provided, and complete password and 2FA using dialog.] ***
+2025-11-25 09:58:13,426 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,431 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : List installed MAS apps.] **************************
+2025-11-25 09:58:13,452 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,456 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Ensure unwanted MAS apps are uninstalled.] *********
+2025-11-25 09:58:13,468 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,473 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Ensure configured MAS apps are installed.] *********
+2025-11-25 09:58:13,485 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,490 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.mas : Upgrade all apps (if configured).] *****************
+2025-11-25 09:58:13,510 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,518 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.dock : Install dockutil.] ********************************
+2025-11-25 09:58:13,529 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,534 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.dock : Remove configured Dock items.] ********************
+2025-11-25 09:58:13,544 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,548 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.dock : Ensure required dock items exist.] ****************
+2025-11-25 09:58:13,558 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,563 p=93130 u=mopets n=ansible INFO| TASK [geerlingguy.mac.dock : Ensure dock items are in correct position.] *******
+2025-11-25 09:58:13,572 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,580 p=93130 u=mopets n=ansible INFO| TASK [Register path to sed.] ***************************************************
+2025-11-25 09:58:13,590 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,595 p=93130 u=mopets n=ansible INFO| TASK [Define sed_path variable.] ***********************************************
+2025-11-25 09:58:13,605 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,611 p=93130 u=mopets n=ansible INFO| TASK [Copy sudoers configuration into place.] **********************************
+2025-11-25 09:58:13,620 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:13,624 p=93130 u=mopets n=ansible INFO| TASK [Ensure default shell is zsh] *********************************************
+2025-11-25 09:58:14,348 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/opencode_repo/mac-playbook/tasks/terminal.yml:5:11
+
+3   become: true
+4   ansible.builtin.user:
+5     name: "{{ ansible_user_id }}"
+            ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:14,348 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1]
+2025-11-25 09:58:14,354 p=93130 u=mopets n=ansible INFO| TASK [Note terminal settings are managed via chezmoi] **************************
+2025-11-25 09:58:14,366 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    msg: Terminal configs (prompt, aliases, tmux) are applied via chezmoi dotfiles.
+
+2025-11-25 09:58:14,369 p=93130 u=mopets n=ansible INFO| TASK [Run .osx dotfiles.] ******************************************************
+2025-11-25 09:58:14,632 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,636 p=93130 u=mopets n=ansible INFO| TASK [Gather information about the current Documents path] *********************
+2025-11-25 09:58:14,645 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,649 p=93130 u=mopets n=ansible INFO| TASK [Abort if Documents path is an unexpected type] ***************************
+2025-11-25 09:58:14,658 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,662 p=93130 u=mopets n=ansible INFO| TASK [Ensure Nextcloud base directory exists] **********************************
+2025-11-25 09:58:14,672 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,677 p=93130 u=mopets n=ansible INFO| TASK [Ensure Nextcloud Documents directory exists] *****************************
+2025-11-25 09:58:14,686 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,693 p=93130 u=mopets n=ansible INFO| TASK [Collect existing Documents contents when a directory is present] *********
+2025-11-25 09:58:14,704 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,708 p=93130 u=mopets n=ansible INFO| TASK [Move existing Documents contents into Nextcloud] *************************
+2025-11-25 09:58:14,718 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,723 p=93130 u=mopets n=ansible INFO| TASK [Remove the original Documents directory after migration] *****************
+2025-11-25 09:58:14,732 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,737 p=93130 u=mopets n=ansible INFO| TASK [Create Documents symlink pointing to Nextcloud] **************************
+2025-11-25 09:58:14,747 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,751 p=93130 u=mopets n=ansible INFO| TASK [Install global Composer packages.] ***************************************
+2025-11-25 09:58:14,761 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,765 p=93130 u=mopets n=ansible INFO| TASK [Install global NPM packages.] ********************************************
+2025-11-25 09:58:14,774 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,779 p=93130 u=mopets n=ansible INFO| TASK [Install global Pip packages.] ********************************************
+2025-11-25 09:58:14,788 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,793 p=93130 u=mopets n=ansible INFO| TASK [Install global Ruby gems.] ***********************************************
+2025-11-25 09:58:14,803 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,807 p=93130 u=mopets n=ansible INFO| TASK [Ensure Sublime Text directories exist.] **********************************
+2025-11-25 09:58:14,819 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1] => (item=~/Library/Application Support/Sublime Text/Packages/User) 
+2025-11-25 09:58:14,820 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1] => (item=~/Library/Application Support/Sublime Text/Installed Packages) 
+2025-11-25 09:58:14,821 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,825 p=93130 u=mopets n=ansible INFO| TASK [Ensure Sublime Package Control is installed.] ****************************
+2025-11-25 09:58:14,835 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,840 p=93130 u=mopets n=ansible INFO| TASK [Ensure Sublime Package Control Packages are configured.] *****************
+2025-11-25 09:58:14,851 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,854 p=93130 u=mopets n=ansible INFO| TASK [Ensure Sublime text user Preferences and theme are set.] *****************
+2025-11-25 09:58:14,865 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1] => (item=Markdown.sublime-settings) 
+2025-11-25 09:58:14,866 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1] => (item=Plain text.sublime-settings) 
+2025-11-25 09:58:14,867 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1] => (item=Preferences.sublime-settings) 
+2025-11-25 09:58:14,869 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1] => (item=WordCount.sublime-settings) 
+2025-11-25 09:58:14,869 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,874 p=93130 u=mopets n=ansible INFO| TASK [Run configured post-provision ansible task files.] ***********************
+2025-11-25 09:58:14,895 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,899 p=93130 u=mopets n=ansible INFO| TASK [Show manual next steps] **************************************************
+2025-11-25 09:58:14,911 p=93130 u=mopets n=ansible INFO| ok: [127.0.0.1] => 
+    msg:
+    - 'Manual next steps after this playbook:'
+    - '1) Restore SSH keys from your encrypted backup into ~/.ssh:'
+    - '   gpg -d ssh-backup.tar.gz.gpg > ssh-backup.tar.gz && tar xzf ssh-backup.tar.gz
+        && rm ssh-backup.tar.gz'
+    - '2) Run chezmoi to restore dotfiles (if not done already):'
+    - '   chezmoi init git@github.com:YOUR_USER/dotfiles.git && chezmoi apply'
+    - 3) Log into Bitwarden, Nextcloud, App Store, iCloud (Photos/Music), email, calendars,
+        browsers, and chat apps.
+    - 4) Configure Time Machine backup and import VPN profiles (e.g. WireGuard) if you
+        use them.
+    - 5) Restore app-specific data if needed (e.g. Libation library, RustDesk config,
+        Parallels .pvm VMs).
+
+2025-11-25 09:58:14,919 p=93130 u=mopets n=ansible INFO| RUNNING HANDLER [geerlingguy.mac.homebrew : Clear homebrew cache] **************
+2025-11-25 09:58:14,940 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/handlers/main.yml:9:11
+
+7     state: absent
+8   when: 'homebrew_clear_cache | bool'
+9   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+            ^ column 11
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:14,940 p=93130 u=mopets n=ansible INFO| [DEPRECATION WARNING]: INJECT_FACTS_AS_VARS default to `True` is deprecated, top-level facts will not be auto injected after the change. This feature will be removed from ansible-core version 2.24.
+Origin: /Users/mopets/.ansible/collections/ansible_collections/geerlingguy/mac/roles/homebrew/handlers/main.yml:10:16
+
+ 8   when: 'homebrew_clear_cache | bool'
+ 9   become: "{{ (homebrew_user != ansible_user_id) | bool }}"
+10   become_user: "{{ homebrew_user }}"
+                  ^ column 16
+
+Use `ansible_facts["fact_name"]` (no `ansible_` prefix) instead.
+
+
+2025-11-25 09:58:14,940 p=93130 u=mopets n=ansible INFO| skipping: [127.0.0.1]
+2025-11-25 09:58:14,941 p=93130 u=mopets n=ansible INFO| PLAY RECAP *********************************************************************
+2025-11-25 09:58:14,941 p=93130 u=mopets n=ansible INFO| 127.0.0.1                  : ok=27   changed=7    unreachable=0    failed=0    skipped=57   rescued=0    ignored=0   

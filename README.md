@@ -4,6 +4,74 @@
 
 [![CI][badge-gh-actions]][link-gh-actions]
 
+## Bootstrap (copy/paste)
+
+Use this on a fresh Mac to install CLT/Homebrew and clone the playbook:
+
+```bash
+#!/usr/bin/env bash
+
+set -u  # treat unset variables as an error
+
+REPO_SSH="git@github.com:mopeps/mac-playbook.git"
+TARGET_DIR="$HOME/mac-playbook"
+
+echo "→ Installing Xcode Command Line Tools (if needed)..."
+xcode-select --install 2>/dev/null || true
+
+echo "→ Waiting for Command Line Tools to finish installing..."
+until xcode-select -p >/dev/null 2>&1; do
+  sleep 5
+done
+echo "✓ Command Line Tools installed."
+
+# Install Homebrew if missing
+if ! command -v brew >/dev/null 2>&1; then
+  echo "→ Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Verify Homebrew install
+if ! command -v brew >/dev/null 2>&1; then
+  echo "✗ ERROR: Homebrew installation failed. Aborting bootstrap."
+  exit 1
+fi
+
+# Ensure brew is in PATH for this session (Apple Silicon + Intel)
+if [[ -d /opt/homebrew/bin ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -d /usr/local/bin ]]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+
+echo "✓ Homebrew is available as: $(command -v brew)"
+
+# Optional: make sure git exists (usually provided by CLT)
+if ! command -v git >/dev/null 2>&1; then
+  echo "→ git not found, installing via Homebrew..."
+  brew install git
+fi
+
+echo "✓ git is available as: $(command -v git)"
+
+# Clone your Mac playbook repo
+if [[ -d "$TARGET_DIR/.git" ]]; then
+  echo "→ Repository already cloned at: $TARGET_DIR"
+else
+  echo "→ Cloning repo: $REPO_SSH"
+  git clone "$REPO_SSH" "$TARGET_DIR" || {
+    echo "✗ ERROR: git clone failed. Check your SSH keys / GitHub access."
+    exit 1
+  }
+fi
+
+echo
+echo "✓ Bootstrap complete."
+echo "Next steps (adjust to your usual workflow):"
+echo "   cd \"$TARGET_DIR\""
+echo "   ./run.sh    # or whatever script/command you use to start the playbook"
+```
+
 This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have a few manual installation steps, but at least it's all documented here.
 
 ## Installation
