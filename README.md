@@ -37,11 +37,18 @@ if ! command -v brew >/dev/null 2>&1; then
   exit 1
 fi
 
-# Ensure brew is in PATH for this session (Apple Silicon + Intel)
+# Ensure brew is in PATH now and for future shells (Apple Silicon + Intel)
 if [[ -d /opt/homebrew/bin ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  BREW_PREFIX="/opt/homebrew"
 elif [[ -d /usr/local/bin ]]; then
-  export PATH="/usr/local/bin:$PATH"
+  BREW_PREFIX="/usr/local"
+else
+  BREW_PREFIX=""
+fi
+
+if [[ -n "$BREW_PREFIX" ]]; then
+  { echo; echo "eval \"\$(${BREW_PREFIX}/bin/brew shellenv)\""; } >> "$HOME/.zprofile"
+  eval "$(${BREW_PREFIX}/bin/brew shellenv)"
 fi
 
 echo "✓ Homebrew is available as: $(command -v brew)"
