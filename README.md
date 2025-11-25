@@ -13,7 +13,7 @@ Use this on a fresh Mac to install CLT/Homebrew and clone the playbook:
 
 set -u  # treat unset variables as an error
 
-REPO_SSH="git@github.com:mopeps/mac-playbook.git"
+REPO_URL="https://github.com/mopeps/mac-playbook.git"
 TARGET_DIR="$HOME/mac-playbook"
 
 echo "→ Installing Xcode Command Line Tools (if needed)..."
@@ -58,8 +58,8 @@ echo "✓ git is available as: $(command -v git)"
 if [[ -d "$TARGET_DIR/.git" ]]; then
   echo "→ Repository already cloned at: $TARGET_DIR"
 else
-  echo "→ Cloning repo: $REPO_SSH"
-  git clone "$REPO_SSH" "$TARGET_DIR" || {
+  echo "→ Cloning repo: $REPO_URL"
+  git clone "$REPO_URL" "$TARGET_DIR" || {
     echo "✗ ERROR: git clone failed. Check your SSH keys / GitHub access."
     exit 1
   }
