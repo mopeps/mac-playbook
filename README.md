@@ -9,6 +9,7 @@
 Use this on a new or existing Mac (safe to rerun) to install CLT/Homebrew and clone the playbook:
 
 ```bash
+cat <<'EOF' >/tmp/mac-playbook-bootstrap.sh
 #!/usr/bin/env bash
 
 set -u  # treat unset variables as an error
@@ -70,7 +71,7 @@ if [[ -d "$TARGET_DIR/.git" ]]; then
 else
   echo "→ Cloning repo: $REPO_URL"
   git clone "$REPO_URL" "$TARGET_DIR" || {
-    echo "✗ ERROR: git clone failed. Check your SSH keys / GitHub access."
+    echo "✗ ERROR: git clone failed. Check your network/GitHub access."
     exit 1
   }
 fi
@@ -86,6 +87,9 @@ echo "       ./ms-generate_config_yml.sh"
 echo "  B) On the target/new Mac:"
 echo "       ansible-galaxy install -r requirements.yml"
 echo "       ansible-playbook main.yml -K"
+EOF
+
+bash /tmp/mac-playbook-bootstrap.sh
 ```
 
 This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have a few manual installation steps, but at least it's all documented here.
