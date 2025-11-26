@@ -6,7 +6,7 @@
 
 ## Bootstrap (copy/paste)
 
-Use this on a fresh Mac to install CLT/Homebrew and clone the playbook:
+Use this on a new or existing Mac (safe to rerun) to install CLT/Homebrew and clone the playbook:
 
 ```bash
 #!/usr/bin/env bash
@@ -47,8 +47,11 @@ else
 fi
 
 if [[ -n "$BREW_PREFIX" ]]; then
-  { echo; echo "eval \"\$(${BREW_PREFIX}/bin/brew shellenv)\""; } >> "$HOME/.zprofile"
-  eval "$(${BREW_PREFIX}/bin/brew shellenv)"
+  shellenv_line="eval \"\$(${BREW_PREFIX}/bin/brew shellenv)\""
+  if ! grep -Fxq "$shellenv_line" "$HOME/.zprofile" 2>/dev/null; then
+    { echo; echo "$shellenv_line"; } >> "$HOME/.zprofile"
+  fi
+  eval "$shellenv_line"
 fi
 
 echo "✓ Homebrew is available as: $(command -v brew)"
@@ -74,9 +77,12 @@ fi
 
 echo
 echo "✓ Bootstrap complete."
-echo "Next steps (adjust to your usual workflow):"
-echo "   cd \"$TARGET_DIR\""
-echo "   ./run.sh    # or whatever script/command you use to start the playbook"
+cd "$TARGET_DIR"
+echo "Now in: $(pwd)"
+echo
+echo "Next steps (pick one):"
+echo "  A) On the source/old Mac: ./ms-generate_config_yml.sh  # capture current apps into config.yml"
+echo "  B) On the target/new Mac: ansible-galaxy install -r requirements.yml && ansible-playbook main.yml -K"
 ```
 
 This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have a few manual installation steps, but at least it's all documented here.
