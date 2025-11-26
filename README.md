@@ -81,8 +81,11 @@ cd "$TARGET_DIR"
 echo "Now in: $(pwd)"
 echo
 echo "Next steps (pick one):"
-echo "  A) On the source/old Mac: ./ms-generate_config_yml.sh  # capture current apps into config.yml"
-echo "  B) On the target/new Mac: ansible-galaxy install -r requirements.yml && ansible-playbook main.yml -K"
+echo "  A) On the source/old Mac:"
+echo "       ./ms-generate_config_yml.sh"
+echo "  B) On the target/new Mac:"
+echo "       ansible-galaxy install -r requirements.yml"
+echo "       ansible-playbook main.yml -K"
 ```
 
 This playbook installs and configures most of the software I use on my Mac for web and software development. Some things in macOS are slightly difficult to automate, so I still have a few manual installation steps, but at least it's all documented here.
